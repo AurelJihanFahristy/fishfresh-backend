@@ -20,6 +20,10 @@ app.register_blueprint(predict_bp)
 def home():
     return "FishFresh Backend is running!"
 
+# ======================================================================
+# PERBAIKAN: Taruh penentuan port di luar blok __main__ agar Gunicorn bisa baca
+# ======================================================================
+port = int(os.environ.get('PORT', 10000))
+
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))  # ✅ Render pakai 10000
     app.run(host='0.0.0.0', port=port, debug=False)
