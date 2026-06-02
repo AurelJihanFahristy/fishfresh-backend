@@ -5,8 +5,13 @@ from utils.preprocess import preprocess_image
 from utils.labels import SPECIES_LABELS
 from config import Config
 
-# Load model sekali saja saat server start
-model = load_model(Config.SPECIES_MODEL_PATH)
+model = tf.keras.models.load_model(
+    Config.SPECIES_MODEL_PATH,
+    compile=False,
+    options=tf.saved_model.LoadOptions(
+        experimental_io_device='/job:localhost'
+    )
+)
 
 def predict_species(img_path):
     """
