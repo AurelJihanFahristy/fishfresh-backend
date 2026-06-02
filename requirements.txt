@@ -1,8 +1,7 @@
 flask
 flask-cors
 tensorflow-cpu==2.13.0
-keras==2.13.0
 numpy==1.24.3
 pillow
-h5py
+h5py==3.9.0
 gunicorn
